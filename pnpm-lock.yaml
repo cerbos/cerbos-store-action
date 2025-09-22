@@ -12,8 +12,8 @@ importers:
         specifier: ^1.11.1
         version: 1.11.1
       cerbos-actions-common:
-        specifier: github:cerbos/cerbos-actions-common#0.0.4
-        version: https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/db512343cf21eabec4c0c849ca149a1b78a65740
+        specifier: github:cerbos/cerbos-actions-common#0.0.5
+        version: https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/61272e11ee42e392b5a121a935b196b5e03ca6d1
       https-proxy-agent:
         specifier: ^7.0.6
         version: 7.0.6
@@ -30,9 +30,6 @@ importers:
       '@types/node':
         specifier: ^24.4.0
         version: 24.5.2
-      '@vercel/ncc':
-        specifier: ^0.38.3
-        version: 0.38.4
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
@@ -51,6 +48,9 @@ importers:
       tsx:
         specifier: ^4.20.5
         version: 4.20.5
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
       typescript-eslint:
         specifier: ^8.43.0
         version: 8.44.0(eslint@9.36.0)(typescript@5.9.2)
@@ -488,10 +488,6 @@ packages:
     resolution: {integrity: sha512-zaz9u8EJ4GBmnehlrpoKvj/E3dNbuQ7q0ucyZImm3cLqJ8INTc970B1qEqDX/Rzq65r3TvVTN7kHWPBoyW7DWw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@vercel/ncc@0.38.4':
-    resolution: {integrity: sha512-8LwjnlP39s08C08J5NstzriPvW1SP8Zfpp1BvC2sI35kPeZnHfxVkCwu4/+Wodgnd60UtT1n8K8zw+Mp7J9JmQ==}
-    hasBin: true
-
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -551,8 +547,8 @@ packages:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
 
-  cerbos-actions-common@https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/db512343cf21eabec4c0c849ca149a1b78a65740:
-    resolution: {tarball: https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/db512343cf21eabec4c0c849ca149a1b78a65740}
+  cerbos-actions-common@https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/61272e11ee42e392b5a121a935b196b5e03ca6d1:
+    resolution: {tarball: https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/61272e11ee42e392b5a121a935b196b5e03ca6d1}
     version: 0.0.0
     engines: {node: 22.19.0, pnpm: 10.16.1}
 
@@ -1509,8 +1505,6 @@ snapshots:
       '@typescript-eslint/types': 8.44.0
       eslint-visitor-keys: 4.2.1
 
-  '@vercel/ncc@0.38.4': {}
-
   acorn-jsx@5.3.2(acorn@8.15.0):
     dependencies:
       acorn: 8.15.0
@@ -1559,7 +1553,7 @@ snapshots:
 
   callsites@3.1.0: {}
 
-  cerbos-actions-common@https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/db512343cf21eabec4c0c849ca149a1b78a65740:
+  cerbos-actions-common@https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/61272e11ee42e392b5a121a935b196b5e03ca6d1:
     dependencies:
       '@actions/core': 1.11.1
       '@actions/io': 1.1.3
