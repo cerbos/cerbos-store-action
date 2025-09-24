@@ -1,0 +1,3 @@
+#!/bin/bash
+RANDOM_DURATION="${RANDOM}h"
+sed "s/\${DURATION_TO_EXPIRE}/${RANDOM_DURATION}/g" "$1"
