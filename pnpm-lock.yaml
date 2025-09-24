@@ -12,29 +12,29 @@ importers:
         specifier: ^1.11.1
         version: 1.11.1
       cerbos-actions-common:
-        specifier: github:cerbos/cerbos-actions-common#0.0.14
-        version: https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/577e2cc07ce5b75f277f259477a2b5f23afd2ccd
+        specifier: github:cerbos/cerbos-actions-common#0.0.15
+        version: https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/e103d5566c75366a17850f49656d31c082ae135a
       https-proxy-agent:
         specifier: ^7.0.6
         version: 7.0.6
       octokit:
-        specifier: ^5.0.3
+        specifier: ^5.0.5
         version: 5.0.5
       zod:
-        specifier: ^4.1.8
+        specifier: ^4.1.12
         version: 4.1.12
     devDependencies:
       '@eslint/js':
-        specifier: ^9.35.0
+        specifier: ^9.38.0
         version: 9.39.0
       '@types/node':
-        specifier: ^24.4.0
+        specifier: 24.10.0
         version: 24.10.0
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
       eslint:
-        specifier: ^9.35.0
+        specifier: ^9.38.0
         version: 9.39.0
       glob:
         specifier: ^11.0.3
@@ -46,13 +46,13 @@ importers:
         specifier: ^3.6.2
         version: 3.6.2
       tsx:
-        specifier: ^4.20.5
+        specifier: ^4.20.6
         version: 4.20.6
       typescript:
-        specifier: ^5.9.2
+        specifier: ^5.9.3
         version: 5.9.3
       typescript-eslint:
-        specifier: ^8.43.0
+        specifier: ^8.46.2
         version: 8.46.2(eslint@9.39.0)(typescript@5.9.3)
 
 packages:
@@ -68,6 +68,9 @@ packages:
 
   '@actions/io@1.1.3':
     resolution: {integrity: sha512-wi9JjgKLYS7U/z8PPbco+PvTb/nRWjeoFlJ1Qer83k/3C5PHQi28hiVdeE2kHXmIL99mQFawx8qt/JPjZilJ8Q==}
+
+  '@actions/io@2.0.0':
+    resolution: {integrity: sha512-Jv33IN09XLO+0HS79aaODsvIRyduiF7NY/F6LYeK5oeUmrsz7aFdRphQjFoESF4jS7lMauDOttKALcpapVDIAg==}
 
   '@actions/tool-cache@2.0.2':
     resolution: {integrity: sha512-fBhNNOWxuoLxztQebpOaWu6WeVmuwa77Z+DxIZ1B+OYvGkGQon6kTVg6Z32Cb13WCuw0szqonK+hh03mJV7Z6w==}
@@ -547,8 +550,8 @@ packages:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
 
-  cerbos-actions-common@https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/577e2cc07ce5b75f277f259477a2b5f23afd2ccd:
-    resolution: {tarball: https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/577e2cc07ce5b75f277f259477a2b5f23afd2ccd}
+  cerbos-actions-common@https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/e103d5566c75366a17850f49656d31c082ae135a:
+    resolution: {tarball: https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/e103d5566c75366a17850f49656d31c082ae135a}
     version: 0.0.0
     engines: {node: 24.11.0, pnpm: 10.20.0}
 
@@ -1085,6 +1088,8 @@ snapshots:
 
   '@actions/io@1.1.3': {}
 
+  '@actions/io@2.0.0': {}
+
   '@actions/tool-cache@2.0.2':
     dependencies:
       '@actions/core': 1.11.1
@@ -1555,10 +1560,10 @@ snapshots:
 
   callsites@3.1.0: {}
 
-  cerbos-actions-common@https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/577e2cc07ce5b75f277f259477a2b5f23afd2ccd:
+  cerbos-actions-common@https://codeload.github.com/cerbos/cerbos-actions-common/tar.gz/e103d5566c75366a17850f49656d31c082ae135a:
     dependencies:
       '@actions/core': 1.11.1
-      '@actions/io': 1.1.3
+      '@actions/io': 2.0.0
       '@actions/tool-cache': 2.0.2
       octokit: 5.0.5
       zod: 4.1.12

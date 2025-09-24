@@ -1,0 +1,14 @@
+---
+apiVersion: api.cerbos.dev/v1
+resourcePolicy:
+  version: default
+  resource: leave_request
+  rules:
+    - actions:
+        - delete
+      roles:
+        - USER
+      effect: EFFECT_ALLOW
+      condition:
+        match:
+          expr: now() - timestamp(R.attr.deletedAt) > duration('${DURATION_TO_EXPIRE}')
