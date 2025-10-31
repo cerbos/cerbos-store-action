@@ -1,6 +1,9 @@
 # Dependency directory
 node_modules
 
+# Temporary policies directory
+policies
+
 # Logs
 logs
 *.log
