@@ -1,6 +1,9 @@
 name: 'Cerbos Store Action'
 description: 'Uploads Cerbos policies to Cerbos Hub stores'
 author: 'Cerbos'
+branding:
+  icon: 'upload-cloud'
+  color: 'orange'
 
 inputs:
   github_token:
