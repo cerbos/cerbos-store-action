@@ -11,7 +11,20 @@ Cerbos helps you super-charge your authorization implementation by writing conte
 
 ## Usage
 
-WORK IN PROGRESS
+This action automatically installs `cerbosctl` if it doesn't already exist or if the installed version (via [cerbos-setup-action](https://github.com/cerbos/cerbos-setup-action))  doesn't match the specified `version`.
+
+```yaml
+- name: Upload cerbos policies
+  uses: cerbos/cerbos-store-action@v1
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    store_id: ${{ secrets.CERBOS_HUB_STORE_ID }}
+    client_id: ${{ secrets.CERBOS_HUB_CLIENT_ID }}
+    client_secret: ${{ secrets.CERBOS_HUB_CLIENT_SECRET }}
+    to_revision: HEAD
+    from_revision: main
+    subdir: policies # optional subdirectory of Cerbos policies
+```
 
 ## Development
 
@@ -20,12 +33,10 @@ WORK IN PROGRESS
 You'll need to install
 
 - Node.js, matching the version specified in our [.node-version](../.node-version) file
-
   - A version manager that supports this file is recommended, for example [n](https://github.com/tj/n#readme).
     Note that [nvm](https://github.com/nvm-sh/nvm) [does not](https://github.com/nvm-sh/nvm/issues/794).
 
 - pnpm, matching the version specified in our [package.json](./package.json) file
-
   - After installing Node.js, you can enable [Corepack](https://nodejs.org/api/corepack.html) to transparently install the correct `pnpm` version:
     ```console
     $ corepack enable

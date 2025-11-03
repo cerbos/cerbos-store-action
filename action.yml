@@ -5,12 +5,37 @@ author: 'Cerbos'
 inputs:
   github_token:
     description: 'The GitHub token to use'
-    required: false
 
   version:
     description: 'Cerbosctl version to download if not exists in the tool cache already'
-    required: true
     default: 'latest'
+
+  api_endpoint:
+    description: 'Cerbos Hub API endpoint'
+    default: 'https://api.cerbos.cloud'
+
+  store_id:
+    description: 'ID of the Cerbos Hub store to operate on'
+    required: true
+
+  client_id:
+    description: 'Client ID of the store access credential'
+    required: true
+
+  client_secret:
+    description: 'Client secret of the store access credential'
+    required: true
+
+  from_revision:
+    description: 'Git revision to start from when generating the diff (Ex: HEAD~1)'
+    required: true
+
+  to_revision:
+    description: 'Git revision to end when generating the diff (The resolved reference must be the ancestor of the from argument. Ex: HEAD)'
+    required: true
+
+  subdir:
+    description: 'Subdirectory under the repository path to check and upload changes from (Ex: policies)'
 
 runs:
   using: 'node24'
