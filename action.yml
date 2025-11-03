@@ -35,7 +35,7 @@ inputs:
 
   to_revision:
     description: 'Git revision to end when generating the diff (The resolved reference must be the ancestor of the from argument. Ex: HEAD)'
-    required: true
+    default: 'HEAD'
 
   subdir:
     description: 'Subdirectory under the repository path to check and upload changes from (Ex: policies)'
