@@ -48,7 +48,6 @@ async function run(): Promise<void> {
 
   await common.setup({
     binaries: ['cerbosctl'],
-    githubToken: githubToken,
     octokit: octokit,
     version: core.getInput('version')
   })
