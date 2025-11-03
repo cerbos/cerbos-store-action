@@ -11,11 +11,7 @@ Cerbos helps you super-charge your authorization implementation by writing conte
 
 ## Usage
 
-This action requires `cerbosctl` to be installed.
-
-If [cerbos-setup-action](https://github.com/cerbos/cerbos-setup-action) already ran in the workflow, a version of `cerbos` and `cerbosctl` binaries will be available to use.
-This action is going to check the available version and compare it against the version specified by the action input `version`.
-If the versions do not match or the [cerbos-setup-action](https://github.com/cerbos/cerbos-setup-action) is not run before, this action will install `cerbosctl` with the version specified by the action input `version`.
+This action automatically installs `cerbosctl` if it doesn't already exist or if the installed version (via [cerbos-setup-action](https://github.com/cerbos/cerbos-setup-action))  doesn't match the specified `version`.
 
 ```yaml
 - name: Upload cerbos policies
