@@ -30,7 +30,7 @@ inputs:
     required: true
 
   from_revision:
-    description: 'Git revision to start from when generating the diff (Ex: HEAD~1) (The resolved reference must be the ancestor of the to argument)'
+    description: 'Git revision to start from when generating the diff (Ex: HEAD~1) (The resolved reference must be the ancestor of the to_revision input)'
     required: true
 
   to_revision:
