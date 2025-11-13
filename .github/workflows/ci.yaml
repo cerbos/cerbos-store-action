@@ -64,4 +64,3 @@ jobs:
           client_secret: '${{ secrets.CERBOS_HUB_CLIENT_SECRET }}'
           store_id: '${{ secrets.CERBOS_HUB_STORE_ID }}'
           subdir: 'policies'
-          from_revision: HEAD^

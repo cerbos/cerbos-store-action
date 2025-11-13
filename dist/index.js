@@ -41435,10 +41435,9 @@ async function run() {
         coreExports.setFailed("The action input 'store_id', 'client_id' and 'client_secret' must be specified");
         process.exit(1);
     }
-    const fromRevision = coreExports.getInput('from_revision');
     const toRevision = coreExports.getInput('to_revision');
-    if (fromRevision === '' || toRevision === '') {
-        coreExports.setFailed("The action input 'from_revision' and 'to_revision' must be specified");
+    if (toRevision === '') {
+        coreExports.setFailed("The action input 'to_revision' must be specified");
         process.exit(1);
     }
     const octokit = new Octokit({
@@ -41463,7 +41462,7 @@ async function run() {
         clientID: clientID,
         clientSecret: clientSecret,
         storeID: storeID,
-        fromRevision: fromRevision,
+        fromRevision: coreExports.getInput('from_revision'),
         toRevision: toRevision,
         subDir: coreExports.getInput('subdir')
     });

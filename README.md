@@ -11,7 +11,9 @@ Cerbos helps you super-charge your authorization implementation by writing conte
 
 ## Usage
 
-This action automatically installs `cerbosctl` if it doesn't already exist or if the installed version (via [cerbos-setup-action](https://github.com/cerbos/cerbos-setup-action))  doesn't match the specified `version`.
+This action automatically installs `cerbosctl` if it doesn't already exist or if the installed version (via [cerbos-setup-action](https://github.com/cerbos/cerbos-setup-action)) doesn't match the specified `version`.
+
+### Upload new local git repository changes relative to the remote store's current version
 
 ```yaml
 - name: Upload cerbos policies
@@ -21,8 +23,21 @@ This action automatically installs `cerbosctl` if it doesn't already exist or if
     store_id: ${{ secrets.CERBOS_HUB_STORE_ID }}
     client_id: ${{ secrets.CERBOS_HUB_CLIENT_ID }}
     client_secret: ${{ secrets.CERBOS_HUB_CLIENT_SECRET }}
-    to_revision: HEAD
+    subdir: policies # optional subdirectory of Cerbos policies
+```
+
+### Upload new local git repository changes between `from_revision` and `to_revision`
+
+```yaml
+- name: Upload cerbos policies
+  uses: cerbos/cerbos-store-action@v1
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    store_id: ${{ secrets.CERBOS_HUB_STORE_ID }}
+    client_id: ${{ secrets.CERBOS_HUB_CLIENT_ID }}
+    client_secret: ${{ secrets.CERBOS_HUB_CLIENT_SECRET }}
     from_revision: main
+    to_revision: HEAD
     subdir: policies # optional subdirectory of Cerbos policies
 ```
 
