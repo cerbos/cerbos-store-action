@@ -34,7 +34,6 @@ inputs:
 
   to_revision:
     description: 'Git revision to end when generating the diff (Ex: HEAD)'
-    default: 'HEAD'
 
   subdir:
     description: 'Subdirectory under the repository path to check and upload changes from (Ex: policies)'
