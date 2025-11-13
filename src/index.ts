@@ -24,12 +24,6 @@ async function run(): Promise<void> {
     process.exit(1)
   }
 
-  const toRevision = core.getInput('to_revision')
-  if (toRevision === '') {
-    core.setFailed("The action input 'to_revision' must be specified")
-    process.exit(1)
-  }
-
   const octokit = new Octokit({
     auth: githubToken,
     request: {
@@ -55,7 +49,7 @@ async function run(): Promise<void> {
     clientSecret: clientSecret,
     storeID: storeID,
     fromRevision: core.getInput('from_revision'),
-    toRevision: toRevision,
+    toRevision: core.getInput('to_revision'),
     subDir: core.getInput('subdir')
   })
 }

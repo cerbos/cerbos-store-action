@@ -41435,11 +41435,6 @@ async function run() {
         coreExports.setFailed("The action input 'store_id', 'client_id' and 'client_secret' must be specified");
         process.exit(1);
     }
-    const toRevision = coreExports.getInput('to_revision');
-    if (toRevision === '') {
-        coreExports.setFailed("The action input 'to_revision' must be specified");
-        process.exit(1);
-    }
     const octokit = new Octokit({
         auth: githubToken,
         request: {
@@ -41463,7 +41458,7 @@ async function run() {
         clientSecret: clientSecret,
         storeID: storeID,
         fromRevision: coreExports.getInput('from_revision'),
-        toRevision: toRevision,
+        toRevision: coreExports.getInput('to_revision'),
         subDir: coreExports.getInput('subdir')
     });
 }
