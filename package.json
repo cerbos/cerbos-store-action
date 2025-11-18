@@ -30,26 +30,25 @@
   "author": "Cerbos",
   "license": "Apache-2.0",
   "dependencies": {
-    "@actions/core": "^1.11.1",
+    "@actions/core": "1.11.1",
     "cerbos-actions-common": "github:cerbos/cerbos-actions-common#0.0.16",
-    "https-proxy-agent": "^7.0.6",
-    "octokit": "^5.0.5",
-    "zod": "^4.1.12"
+    "https-proxy-agent": "7.0.6",
+    "octokit": "5.0.5"
   },
   "devDependencies": {
-    "@eslint/js": "^9.38.0",
-    "@rollup/plugin-commonjs": "^29.0.0",
-    "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-typescript": "^12.3.0",
+    "@eslint/js": "9.38.0",
+    "@rollup/plugin-commonjs": "29.0.0",
+    "@rollup/plugin-node-resolve": "16.0.3",
+    "@rollup/plugin-typescript": "12.3.0",
     "@types/node": "24.10.1",
-    "concurrently": "^9.2.1",
-    "eslint": "^9.38.0",
-    "glob": "^11.0.3",
-    "globals": "^16.4.0",
-    "prettier": "^3.6.2",
-    "rollup": "^4.52.5",
-    "tsx": "^4.20.6",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.2"
+    "concurrently": "9.2.1",
+    "eslint": "9.38.0",
+    "glob": "11.0.3",
+    "globals": "16.4.0",
+    "prettier": "3.6.2",
+    "rollup": "4.52.5",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.46.2"
   }
 }
