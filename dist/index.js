@@ -39708,8 +39708,8 @@ const argsSchema = object({
     clientID: string().nonempty(),
     clientSecret: string().nonempty(),
     storeID: string().nonempty(),
-    fromRevision: string().nonempty(),
-    toRevision: string().nonempty(),
+    fromRevision: string().optional(),
+    toRevision: string().optional(),
     subDir: string().optional()
 });
 const validateArgs = (args) => {
@@ -39729,13 +39729,27 @@ const upload = async (args) => {
         coreExports.setFailed(`Environment variable ${workspaceEnvKey} is not set by the workflow runner.`);
         process.exit(1);
     }
-    let command = `${av.path} hub store upload-git ${args.fromRevision} ${args.toRevision} --path=${workspaceDir} --api-endpoint="${args.apiEndpoint}" --store-id=${args.storeID} --client-id=${args.clientID} --client-secret=${args.clientSecret}`;
+    let command = `${av.path} hub store upload-git --path=${workspaceDir} --api-endpoint="${args.apiEndpoint}" --store-id=${args.storeID} --client-id=${args.clientID} --client-secret=${args.clientSecret}`;
     if (args.subDir && args.subDir !== '') {
-        coreExports.info(`Subdirectory is set to ${args.subDir}`);
-        command += ` --subdir ${args.subDir}`;
+        coreExports.info(`--subdir is set to ${args.subDir}`);
+        command += ` --subdir=${args.subDir}`;
     }
     else {
-        coreExports.info('Subdirectory is not set');
+        coreExports.info('--subdir is not set');
+    }
+    if (args.fromRevision && args.fromRevision !== '') {
+        coreExports.info(`--from is set to ${args.fromRevision}`);
+        command += ` --from=${args.fromRevision}`;
+    }
+    else {
+        coreExports.info('--from is not set');
+    }
+    if (args.toRevision && args.toRevision !== '') {
+        coreExports.info(`--to is set to ${args.toRevision}`);
+        command += ` --to=${args.toRevision}`;
+    }
+    else {
+        coreExports.info('--to is not set');
     }
     coreExports.info(`The command to run is: ${command}`);
     coreExports.startGroup(`The results for the command ${command}`);
@@ -41421,12 +41435,6 @@ async function run() {
         coreExports.setFailed("The action input 'store_id', 'client_id' and 'client_secret' must be specified");
         process.exit(1);
     }
-    const fromRevision = coreExports.getInput('from_revision');
-    const toRevision = coreExports.getInput('to_revision');
-    if (fromRevision === '' || toRevision === '') {
-        coreExports.setFailed("The action input 'from_revision' and 'to_revision' must be specified");
-        process.exit(1);
-    }
     const octokit = new Octokit({
         auth: githubToken,
         request: {
@@ -41449,8 +41457,8 @@ async function run() {
         clientID: clientID,
         clientSecret: clientSecret,
         storeID: storeID,
-        fromRevision: fromRevision,
-        toRevision: toRevision,
+        fromRevision: coreExports.getInput('from_revision'),
+        toRevision: coreExports.getInput('to_revision'),
         subDir: coreExports.getInput('subdir')
     });
 }

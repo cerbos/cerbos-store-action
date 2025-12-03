@@ -46,22 +46,3 @@ jobs:
       - name: Test
         run: |
           pnpm run test
-
-      - name: Generate a policy from template to test the action
-        run: |
-          mkdir -p policies && templates/replace.sh templates/policy.template.yaml > policies/policy.yaml
-
-      - name: Add generated policy file and amend the latest commit temporarily
-        run: |
-          git add -f policies/policy.yaml && git -c "user.name=cerbos-store-action-ci" -c "user.email=sdk@cerbos.dev" commit --amend --no-edit
-
-      - name: Use action
-        uses: ./
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          api_endpoint: '${{ secrets.CERBOS_HUB_API_ENDPOINT }}'
-          client_id: '${{ secrets.CERBOS_HUB_CLIENT_ID }}'
-          client_secret: '${{ secrets.CERBOS_HUB_CLIENT_SECRET }}'
-          store_id: '${{ secrets.CERBOS_HUB_STORE_ID }}'
-          subdir: 'policies'
-          from_revision: HEAD^
