@@ -7,9 +7,10 @@ import * as path from 'path';
 import * as http from 'http';
 import http__default from 'http';
 import * as https from 'https';
-import https__default from 'https';
-import require$$0$7 from 'net';
-import require$$1 from 'tls';
+import https__default, { Agent as Agent$1 } from 'https';
+import * as net from 'net';
+import * as tls from 'tls';
+import tls__default from 'tls';
 import * as events$1 from 'events';
 import events__default from 'events';
 import require$$5$4, { ok } from 'assert';
@@ -25,21 +26,21 @@ import require$$7 from 'node:querystring';
 import require$$8 from 'node:events';
 import require$$0$5 from 'node:diagnostics_channel';
 import require$$5 from 'node:tls';
-import require$$1$2 from 'node:zlib';
+import require$$1$1 from 'node:zlib';
 import require$$5$1 from 'node:perf_hooks';
 import require$$8$1 from 'node:util/types';
-import require$$1$1 from 'node:worker_threads';
-import require$$1$3 from 'node:url';
+import require$$1 from 'node:worker_threads';
+import require$$1$2 from 'node:url';
 import require$$5$2 from 'node:async_hooks';
-import require$$1$4 from 'node:console';
-import require$$1$5 from 'node:dns';
+import require$$1$3 from 'node:console';
+import require$$1$4 from 'node:dns';
 import require$$5$3 from 'string_decoder';
 import * as child from 'child_process';
 import { setTimeout as setTimeout$1 } from 'timers';
 import * as stream from 'stream';
 import * as path$1 from 'node:path';
 import require$$0$6 from 'tty';
-import require$$5$5 from 'url';
+import { URL as URL$1 } from 'url';
 
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -284,7 +285,7 @@ var hasRequiredTunnel$1;
 function requireTunnel$1 () {
 	if (hasRequiredTunnel$1) return tunnel$1;
 	hasRequiredTunnel$1 = 1;
-	var tls = require$$1;
+	var tls = tls__default;
 	var http = http__default;
 	var https = https__default;
 	var events = events__default;
@@ -4929,7 +4930,7 @@ function requireWebidl () {
 	hasRequiredWebidl = 1;
 
 	const { types, inspect } = require$$0$4;
-	const { markAsUncloneable } = require$$1$1;
+	const { markAsUncloneable } = require$$1;
 	const { toUSVString } = requireUtil$7();
 
 	/** @type {import('../../../types/webidl').Webidl} */
@@ -5632,7 +5633,7 @@ function requireUtil$6 () {
 	hasRequiredUtil$6 = 1;
 
 	const { Transform } = require$$0$2;
-	const zlib = require$$1$2;
+	const zlib = require$$1$1;
 	const { redirectStatusSet, referrerPolicySet: referrerPolicyTokens, badPortsSet } = requireConstants$3();
 	const { getGlobalOrigin } = requireGlobal$1();
 	const { collectASequenceOfCodePoints, collectAnHTTPQuotedString, removeChars, parseMIMEType } = requireDataUrl();
@@ -12545,7 +12546,7 @@ function requireProxyAgent () {
 	hasRequiredProxyAgent = 1;
 
 	const { kProxy, kClose, kDestroy, kDispatch, kInterceptors } = requireSymbols$4();
-	const { URL } = require$$1$3;
+	const { URL } = require$$1$2;
 	const Agent = requireAgent();
 	const Pool = requirePool();
 	const DispatcherBase = requireDispatcherBase();
@@ -15766,7 +15767,7 @@ function requirePendingInterceptorsFormatter () {
 	hasRequiredPendingInterceptorsFormatter = 1;
 
 	const { Transform } = require$$0$2;
-	const { Console } = require$$1$4;
+	const { Console } = require$$1$3;
 
 	const PERSISTENT = process.versions.icu ? '✅' : 'Y ';
 	const NOT_PERSISTENT = process.versions.icu ? '❌' : 'N ';
@@ -16266,7 +16267,7 @@ function requireDns () {
 	if (hasRequiredDns) return dns;
 	hasRequiredDns = 1;
 	const { isIP } = require$$0$3;
-	const { lookup } = require$$1$5;
+	const { lookup } = require$$1$4;
 	const DecoratorHandler = requireDecoratorHandler();
 	const { InvalidArgumentError, InformationalError } = requireErrors();
 	const maxInt = Math.pow(2, 31) - 1;
@@ -19068,7 +19069,7 @@ function requireFetch () {
 	} = requireResponse();
 	const { HeadersList } = requireHeaders();
 	const { Request, cloneRequest } = requireRequest();
-	const zlib = require$$1$2;
+	const zlib = require$$1$1;
 	const {
 	  bytesMatch,
 	  makePolicyContainer,
@@ -24339,7 +24340,7 @@ function requireEvents () {
 	const { webidl } = requireWebidl();
 	const { kEnumerableProperty } = requireUtil$7();
 	const { kConstruct } = requireSymbols$4();
-	const { MessagePort } = require$$1$1;
+	const { MessagePort } = require$$1;
 
 	/**
 	 * @see https://html.spec.whatwg.org/multipage/comms.html#messageevent
@@ -25577,7 +25578,7 @@ function requirePermessageDeflate () {
 	if (hasRequiredPermessageDeflate) return permessageDeflate;
 	hasRequiredPermessageDeflate = 1;
 
-	const { createInflateRaw, Z_DEFAULT_WINDOWBITS } = require$$1$2;
+	const { createInflateRaw, Z_DEFAULT_WINDOWBITS } = require$$1$1;
 	const { isValidClientWindowBits } = requireUtil$1();
 	const { MessageSizeExceededError } = requireErrors();
 
@@ -29769,7 +29770,7 @@ function isDebug() {
  * Writes debug message to user log
  * @param message debug message
  */
-function debug(message) {
+function debug$2(message) {
     issueCommand('debug', {}, message);
 }
 /**
@@ -32633,8 +32634,8 @@ function downloadTool(url, dest, auth, headers) {
     return __awaiter(this, void 0, void 0, function* () {
         dest = dest || path.join(_getTempDirectory(), crypto.randomUUID());
         yield mkdirP(path.dirname(dest));
-        debug(`Downloading ${url}`);
-        debug(`Destination ${dest}`);
+        debug$2(`Downloading ${url}`);
+        debug$2(`Destination ${dest}`);
         const maxAttempts = 3;
         const minSeconds = _getGlobal('TEST_DOWNLOAD_TOOL_RETRY_MIN_SECONDS', 10);
         const maxSeconds = _getGlobal('TEST_DOWNLOAD_TOOL_RETRY_MAX_SECONDS', 20);
@@ -32667,7 +32668,7 @@ function downloadToolAttempt(url, dest, auth, headers) {
         const response = yield http.get(url, headers);
         if (response.message.statusCode !== 200) {
             const err = new HTTPError(response.message.statusCode);
-            debug(`Failed to download from "${url}". Code(${response.message.statusCode}) Message(${response.message.statusMessage})`);
+            debug$2(`Failed to download from "${url}". Code(${response.message.statusCode}) Message(${response.message.statusMessage})`);
             throw err;
         }
         // Download the response body
@@ -32677,19 +32678,19 @@ function downloadToolAttempt(url, dest, auth, headers) {
         let succeeded = false;
         try {
             yield pipeline(readStream, fs.createWriteStream(dest));
-            debug('download complete');
+            debug$2('download complete');
             succeeded = true;
             return dest;
         }
         finally {
             // Error, delete dest before retry
             if (!succeeded) {
-                debug('download failed');
+                debug$2('download failed');
                 try {
                     yield rmRF(dest);
                 }
                 catch (err) {
-                    debug(`Failed to delete '${dest}'. ${err.message}`);
+                    debug$2(`Failed to delete '${dest}'. ${err.message}`);
                 }
             }
         }
@@ -32711,7 +32712,7 @@ function extractTar(file_1, dest_1) {
         // Create dest
         dest = yield _createExtractFolder(dest);
         // Determine whether GNU tar
-        debug('Checking tar --version');
+        debug$2('Checking tar --version');
         let versionOutput = '';
         yield exec('tar --version', [], {
             ignoreReturnCode: true,
@@ -32721,7 +32722,7 @@ function extractTar(file_1, dest_1) {
                 stderr: (data) => (versionOutput += data.toString())
             }
         });
-        debug(versionOutput.trim());
+        debug$2(versionOutput.trim());
         const isGnuTar = versionOutput.toUpperCase().includes('GNU TAR');
         // Initialize args
         let args;
@@ -32767,8 +32768,8 @@ function cacheFile(sourceFile, targetFile, tool, version, arch) {
     return __awaiter(this, void 0, void 0, function* () {
         version = semverExports.clean(version) || version;
         arch = arch || os.arch();
-        debug(`Caching tool ${tool} ${version} ${arch}`);
-        debug(`source file: ${sourceFile}`);
+        debug$2(`Caching tool ${tool} ${version} ${arch}`);
+        debug$2(`source file: ${sourceFile}`);
         if (!fs.statSync(sourceFile).isFile()) {
             throw new Error('sourceFile is not a file');
         }
@@ -32777,7 +32778,7 @@ function cacheFile(sourceFile, targetFile, tool, version, arch) {
         // copy instead of move. move can fail on Windows due to
         // anti-virus software having an open handle on a file.
         const destPath = path.join(destFolder, targetFile);
-        debug(`destination file ${destPath}`);
+        debug$2(`destination file ${destPath}`);
         yield cp(sourceFile, destPath);
         // write .complete
         _completeToolPath(tool, version, arch);
@@ -32810,13 +32811,13 @@ function find(toolName, versionSpec, arch) {
     if (versionSpec) {
         versionSpec = semverExports.clean(versionSpec) || '';
         const cachePath = path.join(_getCacheDirectory(), toolName, versionSpec, arch);
-        debug(`checking cache: ${cachePath}`);
+        debug$2(`checking cache: ${cachePath}`);
         if (fs.existsSync(cachePath) && fs.existsSync(`${cachePath}.complete`)) {
-            debug(`Found tool in cache ${toolName} ${versionSpec} ${arch}`);
+            debug$2(`Found tool in cache ${toolName} ${versionSpec} ${arch}`);
             toolPath = cachePath;
         }
         else {
-            debug('not found');
+            debug$2('not found');
         }
     }
     return toolPath;
@@ -32857,7 +32858,7 @@ function _createExtractFolder(dest) {
 function _createToolPath(tool, version, arch) {
     return __awaiter(this, void 0, void 0, function* () {
         const folderPath = path.join(_getCacheDirectory(), tool, semverExports.clean(version) || version, arch || '');
-        debug(`destination ${folderPath}`);
+        debug$2(`destination ${folderPath}`);
         const markerPath = `${folderPath}.complete`;
         yield rmRF(folderPath);
         yield rmRF(markerPath);
@@ -32869,7 +32870,7 @@ function _completeToolPath(tool, version, arch) {
     const folderPath = path.join(_getCacheDirectory(), tool, semverExports.clean(version) || version, arch || '');
     const markerPath = `${folderPath}.complete`;
     fs.writeFileSync(markerPath, '');
-    debug('finished caching tool');
+    debug$2('finished caching tool');
 }
 /**
  * Check if version string is explicit
@@ -32878,9 +32879,9 @@ function _completeToolPath(tool, version, arch) {
  */
 function isExplicitVersion(versionSpec) {
     const c = semverExports.clean(versionSpec) || '';
-    debug(`isExplicit: ${c}`);
+    debug$2(`isExplicit: ${c}`);
     const valid = semverExports.valid(c) != null;
-    debug(`explicit? ${valid}`);
+    debug$2(`explicit? ${valid}`);
     return valid;
 }
 /**
@@ -32891,7 +32892,7 @@ function isExplicitVersion(versionSpec) {
  */
 function evaluateVersions(versions, versionSpec) {
     let version = '';
-    debug(`evaluating ${versions.length} versions`);
+    debug$2(`evaluating ${versions.length} versions`);
     versions = versions.sort((a, b) => {
         if (semverExports.gt(a, b)) {
             return 1;
@@ -32907,10 +32908,10 @@ function evaluateVersions(versions, versionSpec) {
         }
     }
     if (version) {
-        debug(`matched: ${version}`);
+        debug$2(`matched: ${version}`);
     }
     else {
-        debug('match not found');
+        debug$2('match not found');
     }
     return version;
 }
@@ -33198,7 +33199,7 @@ function extractUrlVariableNames(url) {
 }
 
 // pkg/dist-src/util/omit.js
-function omit$1(object, keysToOmit) {
+function omit$2(object, keysToOmit) {
   const result = { __proto__: null };
   for (const key of Object.keys(object)) {
     if (keysToOmit.indexOf(key) === -1) {
@@ -33346,7 +33347,7 @@ function parse$1(options) {
   let url = (options.url || "/").replace(/:([a-z]\w+)/g, "{$1}");
   let headers = Object.assign({}, options.headers);
   let body;
-  let parameters = omit$1(options, [
+  let parameters = omit$2(options, [
     "method",
     "baseUrl",
     "url",
@@ -33360,7 +33361,7 @@ function parse$1(options) {
     url = options.baseUrl + url;
   }
   const omittedParameters = Object.keys(options).filter((option) => urlVariableNames.includes(option)).concat("baseUrl");
-  const remainingParameters = omit$1(parameters, omittedParameters);
+  const remainingParameters = omit$2(parameters, omittedParameters);
   const isBinaryRequest = /application\/octet-stream/i.test(headers.accept);
   if (!isBinaryRequest) {
     if (options.mediaType.format) {
@@ -33615,14 +33616,26 @@ const bigIntsStringify = /([\[:])?"(-?\d+)n"($|([\\n]|\s)*(\s|[\\n])*[,\}\]])/g;
 const noiseStringify =
   /([\[:])?("-?\d+n+)n("$|"([\\n]|\s)*(\s|[\\n])*[,\}\]])/g;
 
-/** @typedef {(key: string, value: any, context?: { source: string }) => any} Reviver */
+/**
+ * @typedef {(this: any, key: string | number | undefined, value: any) => any} Replacer
+ * @typedef {(key: string | number | undefined, value: any, context?: { source: string }) => any} Reviver
+ */
 
 /**
- * Function to serialize value to a JSON string.
- * Converts BigInt values to a custom format (strings with digits and "n" at the end) and then converts them to proper big integers in a JSON string.
- * @param {*} value - The value to convert to a JSON string.
- * @param {(Function|Array<string>|null)} [replacer] - A function that alters the behavior of the stringification process, or an array of strings to indicate properties to exclude.
- * @param {(string|number)} [space] - A string or number to specify indentation or pretty-printing.
+ * Converts a JavaScript value to a JSON string.
+ *
+ * Supports serialization of BigInt values using two strategies:
+ * 1. Custom format "123n" → "123" (universal fallback)
+ * 2. Native JSON.rawJSON() (Node.js 22+, fastest) when available
+ *
+ * All other values are serialized exactly like native JSON.stringify().
+ *
+ * @param {*} value The value to convert to a JSON string.
+ * @param {Replacer | Array<string | number> | null} [replacer]
+ *   A function that alters the behavior of the stringification process,
+ *   or an array of strings/numbers to indicate properties to exclude.
+ * @param {string | number} [space]
+ *   A string or number to specify indentation or pretty-printing.
  * @returns {string} The JSON string representation.
  */
 const JSONStringify = (value, replacer, space) => {
@@ -33645,8 +33658,7 @@ const JSONStringify = (value, replacer, space) => {
   const convertedToCustomJSON = originalStringify(
     value,
     (key, value) => {
-      const isNoise =
-        typeof value === "string" && Boolean(value.match(noiseValue));
+      const isNoise = typeof value === "string" && noiseValue.test(value);
 
       if (isNoise) return value.toString() + "n"; // Mark noise values with additional "n" to offset the deletion of one "n" during the processing
 
@@ -33667,32 +33679,69 @@ const JSONStringify = (value, replacer, space) => {
   return denoisedJSON;
 };
 
-/**
- * Support for JSON.parse's context.source feature detection.
- * @type {boolean}
- */
-const isContextSourceSupported = () =>
-  JSON.parse("1", (_, __, context) => !!context && context.source === "1");
+const featureCache = new Map();
 
 /**
- * Convert marked big numbers to BigInt
- * @type {Reviver}
+ * Detects if the current JSON.parse implementation supports the context.source feature.
+ *
+ * Uses toString() fingerprinting to cache results and automatically detect runtime
+ * replacements of JSON.parse (polyfills, mocks, etc.).
+ *
+ * @returns {boolean} true if context.source is supported, false otherwise.
+ */
+const isContextSourceSupported = () => {
+  const parseFingerprint = JSON.parse.toString();
+
+  if (featureCache.has(parseFingerprint)) {
+    return featureCache.get(parseFingerprint);
+  }
+
+  try {
+    const result = JSON.parse(
+      "1",
+      (_, __, context) => !!context?.source && context.source === "1",
+    );
+    featureCache.set(parseFingerprint, result);
+
+    return result;
+  } catch {
+    featureCache.set(parseFingerprint, false);
+
+    return false;
+  }
+};
+
+/**
+ * Reviver function that converts custom-format BigInt strings back to BigInt values.
+ * Also handles "noise" strings that accidentally match the BigInt format.
+ *
+ * @param {string | number | undefined} key The object key.
+ * @param {*} value The value being parsed.
+ * @param {object} [context] Parse context (if supported by JSON.parse).
+ * @param {Reviver} [userReviver] User's custom reviver function.
+ * @returns {any} The transformed value.
  */
 const convertMarkedBigIntsReviver = (key, value, context, userReviver) => {
   const isCustomFormatBigInt =
-    typeof value === "string" && value.match(customFormat);
+    typeof value === "string" && customFormat.test(value);
   if (isCustomFormatBigInt) return BigInt(value.slice(0, -1));
 
-  const isNoiseValue = typeof value === "string" && value.match(noiseValue);
+  const isNoiseValue = typeof value === "string" && noiseValue.test(value);
   if (isNoiseValue) return value.slice(0, -1);
 
   return value;
 };
 
 /**
- * Faster (2x) and simpler function to parse JSON.
- * Based on JSON.parse's context.source feature, which is not universally available now.
- * Does not support the legacy custom format, used in the first version of this library.
+ * Fast JSON.parse implementation (~2x faster than classic fallback).
+ * Uses JSON.parse's context.source feature to detect integers and convert
+ * large numbers directly to BigInt without string manipulation.
+ *
+ * Does not support legacy custom format from v1 of this library.
+ *
+ * @param {string} text JSON string to parse.
+ * @param {Reviver} [reviver] Transform function to apply to each value.
+ * @returns {any} Parsed JavaScript value.
  */
 const JSONParseV2 = (text, reviver) => {
   return JSON.parse(text, (key, value, context) => {
@@ -33715,9 +33764,21 @@ const stringsOrLargeNumbers =
 const noiseValueWithQuotes = /^"-?\d+n+"$/; // Noise - strings that match the custom format before being converted to it
 
 /**
- * Function to parse JSON.
- * If JSON has number values greater than Number.MAX_SAFE_INTEGER, we convert those values to a custom format, then parse them to BigInt values.
- * Other types of values are not affected and parsed as native JSON.parse() would parse them.
+ * Converts a JSON string into a JavaScript value.
+ *
+ * Supports parsing of large integers using two strategies:
+ * 1. Classic fallback: Marks large numbers with "123n" format, then converts to BigInt
+ * 2. Fast path (JSONParseV2): Uses context.source feature (~2x faster) when available
+ *
+ * All other JSON values are parsed exactly like native JSON.parse().
+ *
+ * @param {string} text A valid JSON string.
+ * @param {Reviver} [reviver]
+ *   A function that transforms the results. This function is called for each member
+ *   of the object. If a member contains nested objects, the nested objects are
+ *   transformed before the parent object is.
+ * @returns {any} The parsed JavaScript value.
+ * @throws {SyntaxError} If text is not valid JSON.
  */
 const JSONParse = (text, reviver) => {
   if (!text) return originalParse(text, reviver);
@@ -33729,7 +33790,7 @@ const JSONParse = (text, reviver) => {
     stringsOrLargeNumbers,
     (text, digits, fractional, exponential) => {
       const isString = text[0] === '"';
-      const isNoise = isString && Boolean(text.match(noiseValueWithQuotes));
+      const isNoise = isString && noiseValueWithQuotes.test(text);
 
       if (isNoise) return text.substring(0, text.length - 1) + 'n"'; // Mark noise values with additional "n" to offset the deletion of one "n" during the processing
 
@@ -39140,7 +39201,7 @@ function pick(schema, mask) {
     });
     return clone(schema, def);
 }
-function omit(schema, mask) {
+function omit$1(schema, mask) {
     const currDef = schema._zod.def;
     const checks = currDef.checks;
     const hasChecks = checks && checks.length > 0;
@@ -42713,7 +42774,7 @@ const ZodObject = /*@__PURE__*/ $constructor("ZodObject", (inst, def) => {
     };
     inst.merge = (other) => merge(inst, other);
     inst.pick = (mask) => pick(inst, mask);
-    inst.omit = (mask) => omit(inst, mask);
+    inst.omit = (mask) => omit$1(inst, mask);
     inst.partial = (...args) => partial(ZodOptional, inst, args[0]);
     inst.required = (...args) => required(ZodNonOptional, inst, args[0]);
 });
@@ -43367,8 +43428,6 @@ const upload = async (args) => {
         process.exit(exitCode);
     });
 };
-
-var dist$1 = {};
 
 var src = {exports: {}};
 
@@ -44453,568 +44512,386 @@ function requireSrc () {
 	return src.exports;
 }
 
-var dist = {};
+var srcExports = requireSrc();
+var createDebug = /*@__PURE__*/getDefaultExportFromCjs(srcExports);
 
-var helpers = {};
-
-var hasRequiredHelpers;
-
-function requireHelpers () {
-	if (hasRequiredHelpers) return helpers;
-	hasRequiredHelpers = 1;
-	var __createBinding = (helpers && helpers.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-	    if (k2 === undefined) k2 = k;
-	    var desc = Object.getOwnPropertyDescriptor(m, k);
-	    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-	      desc = { enumerable: true, get: function() { return m[k]; } };
-	    }
-	    Object.defineProperty(o, k2, desc);
-	}) : (function(o, m, k, k2) {
-	    if (k2 === undefined) k2 = k;
-	    o[k2] = m[k];
-	}));
-	var __setModuleDefault = (helpers && helpers.__setModuleDefault) || (Object.create ? (function(o, v) {
-	    Object.defineProperty(o, "default", { enumerable: true, value: v });
-	}) : function(o, v) {
-	    o["default"] = v;
-	});
-	var __importStar = (helpers && helpers.__importStar) || function (mod) {
-	    if (mod && mod.__esModule) return mod;
-	    var result = {};
-	    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-	    __setModuleDefault(result, mod);
-	    return result;
-	};
-	Object.defineProperty(helpers, "__esModule", { value: true });
-	helpers.req = helpers.json = helpers.toBuffer = void 0;
-	const http = __importStar(http__default);
-	const https = __importStar(https__default);
-	async function toBuffer(stream) {
-	    let length = 0;
-	    const chunks = [];
-	    for await (const chunk of stream) {
-	        length += chunk.length;
-	        chunks.push(chunk);
-	    }
-	    return Buffer.concat(chunks, length);
-	}
-	helpers.toBuffer = toBuffer;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	async function json(stream) {
-	    const buf = await toBuffer(stream);
-	    const str = buf.toString('utf8');
-	    try {
-	        return JSON.parse(str);
-	    }
-	    catch (_err) {
-	        const err = _err;
-	        err.message += ` (input: ${str})`;
-	        throw err;
-	    }
-	}
-	helpers.json = json;
-	function req(url, opts = {}) {
-	    const href = typeof url === 'string' ? url : url.href;
-	    const req = (href.startsWith('https:') ? https : http).request(url, opts);
-	    const promise = new Promise((resolve, reject) => {
-	        req
-	            .once('response', resolve)
-	            .once('error', reject)
-	            .end();
-	    });
-	    req.then = promise.then.bind(promise);
-	    return req;
-	}
-	helpers.req = req;
-	
-	return helpers;
+const INTERNAL = Symbol('AgentBaseInternalState');
+class Agent extends http.Agent {
+    constructor(opts) {
+        super(opts);
+        this[INTERNAL] = {};
+    }
+    /**
+     * Determine whether this is an `http` or `https` request.
+     */
+    isSecureEndpoint(options) {
+        if (options) {
+            // First check the `secureEndpoint` property explicitly, since this
+            // means that a parent `Agent` is "passing through" to this instance.
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            if (typeof options.secureEndpoint === 'boolean') {
+                return options.secureEndpoint;
+            }
+            // If no explicit `secure` endpoint, check if `protocol` property is
+            // set. This will usually be the case since using a full string URL
+            // or `URL` instance should be the most common usage.
+            if (typeof options.protocol === 'string') {
+                return options.protocol === 'https:';
+            }
+        }
+        // Finally, if no `protocol` property was set, then fall back to
+        // checking the stack trace of the current call stack, and try to
+        // detect the "https" module.
+        const { stack } = new Error();
+        if (typeof stack !== 'string')
+            return false;
+        return stack
+            .split('\n')
+            .some((l) => l.indexOf('(https.js:') !== -1 ||
+            l.indexOf('node:https:') !== -1);
+    }
+    // In order to support async signatures in `connect()` and Node's native
+    // connection pooling in `http.Agent`, the array of sockets for each origin
+    // has to be updated synchronously. This is so the length of the array is
+    // accurate when `addRequest()` is next called. We achieve this by creating a
+    // fake socket and adding it to `sockets[origin]` and incrementing
+    // `totalSocketCount`.
+    incrementSockets(name) {
+        // If `maxSockets` and `maxTotalSockets` are both Infinity then there is no
+        // need to create a fake socket because Node.js native connection pooling
+        // will never be invoked.
+        if (this.maxSockets === Infinity && this.maxTotalSockets === Infinity) {
+            return null;
+        }
+        // All instances of `sockets` are expected TypeScript errors. The
+        // alternative is to add it as a private property of this class but that
+        // will break TypeScript subclassing.
+        if (!this.sockets[name]) {
+            // @ts-expect-error `sockets` is readonly in `@types/node`
+            this.sockets[name] = [];
+        }
+        const fakeSocket = new net.Socket({ writable: false });
+        this.sockets[name].push(fakeSocket);
+        // @ts-expect-error `totalSocketCount` isn't defined in `@types/node`
+        this.totalSocketCount++;
+        return fakeSocket;
+    }
+    decrementSockets(name, socket) {
+        if (!this.sockets[name] || socket === null) {
+            return;
+        }
+        const sockets = this.sockets[name];
+        const index = sockets.indexOf(socket);
+        if (index !== -1) {
+            sockets.splice(index, 1);
+            // @ts-expect-error  `totalSocketCount` isn't defined in `@types/node`
+            this.totalSocketCount--;
+            if (sockets.length === 0) {
+                // @ts-expect-error `sockets` is readonly in `@types/node`
+                delete this.sockets[name];
+            }
+        }
+    }
+    // In order to properly update the socket pool, we need to call `getName()` on
+    // the core `https.Agent` if it is a secureEndpoint.
+    getName(options) {
+        const secureEndpoint = this.isSecureEndpoint(options);
+        if (secureEndpoint) {
+            return Agent$1.prototype.getName.call(this, options);
+        }
+        return super.getName(options);
+    }
+    createSocket(req, options, cb) {
+        const connectOpts = {
+            ...options,
+            secureEndpoint: this.isSecureEndpoint(options),
+        };
+        const name = this.getName(connectOpts);
+        const fakeSocket = this.incrementSockets(name);
+        Promise.resolve()
+            .then(() => this.connect(req, connectOpts))
+            .then((socket) => {
+            this.decrementSockets(name, fakeSocket);
+            if (typeof socket
+                .addRequest === 'function') {
+                try {
+                    return socket.addRequest(req, connectOpts);
+                }
+                catch (err) {
+                    return cb(err);
+                }
+            }
+            this[INTERNAL].currentSocket = socket;
+            // @ts-expect-error `createSocket()` isn't defined in `@types/node`
+            super.createSocket(req, options, cb);
+        }, (err) => {
+            this.decrementSockets(name, fakeSocket);
+            cb(err);
+        });
+    }
+    createConnection() {
+        const socket = this[INTERNAL].currentSocket;
+        this[INTERNAL].currentSocket = undefined;
+        if (!socket) {
+            throw new Error('No socket was returned in the `connect()` function');
+        }
+        return socket;
+    }
+    get defaultPort() {
+        return (this[INTERNAL].defaultPort ??
+            (this.protocol === 'https:' ? 443 : 80));
+    }
+    set defaultPort(v) {
+        if (this[INTERNAL]) {
+            this[INTERNAL].defaultPort = v;
+        }
+    }
+    get protocol() {
+        return (this[INTERNAL].protocol ??
+            (this.isSecureEndpoint() ? 'https:' : 'http:'));
+    }
+    set protocol(v) {
+        if (this[INTERNAL]) {
+            this[INTERNAL].protocol = v;
+        }
+    }
 }
 
-var hasRequiredDist$1;
-
-function requireDist$1 () {
-	if (hasRequiredDist$1) return dist;
-	hasRequiredDist$1 = 1;
-	(function (exports$1) {
-		var __createBinding = (dist && dist.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-		    if (k2 === undefined) k2 = k;
-		    var desc = Object.getOwnPropertyDescriptor(m, k);
-		    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-		      desc = { enumerable: true, get: function() { return m[k]; } };
-		    }
-		    Object.defineProperty(o, k2, desc);
-		}) : (function(o, m, k, k2) {
-		    if (k2 === undefined) k2 = k;
-		    o[k2] = m[k];
-		}));
-		var __setModuleDefault = (dist && dist.__setModuleDefault) || (Object.create ? (function(o, v) {
-		    Object.defineProperty(o, "default", { enumerable: true, value: v });
-		}) : function(o, v) {
-		    o["default"] = v;
-		});
-		var __importStar = (dist && dist.__importStar) || function (mod) {
-		    if (mod && mod.__esModule) return mod;
-		    var result = {};
-		    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-		    __setModuleDefault(result, mod);
-		    return result;
-		};
-		var __exportStar = (dist && dist.__exportStar) || function(m, exports$1) {
-		    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports$1, p)) __createBinding(exports$1, m, p);
-		};
-		Object.defineProperty(exports$1, "__esModule", { value: true });
-		exports$1.Agent = void 0;
-		const net = __importStar(require$$0$7);
-		const http = __importStar(http__default);
-		const https_1 = https__default;
-		__exportStar(requireHelpers(), exports$1);
-		const INTERNAL = Symbol('AgentBaseInternalState');
-		class Agent extends http.Agent {
-		    constructor(opts) {
-		        super(opts);
-		        this[INTERNAL] = {};
-		    }
-		    /**
-		     * Determine whether this is an `http` or `https` request.
-		     */
-		    isSecureEndpoint(options) {
-		        if (options) {
-		            // First check the `secureEndpoint` property explicitly, since this
-		            // means that a parent `Agent` is "passing through" to this instance.
-		            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-		            if (typeof options.secureEndpoint === 'boolean') {
-		                return options.secureEndpoint;
-		            }
-		            // If no explicit `secure` endpoint, check if `protocol` property is
-		            // set. This will usually be the case since using a full string URL
-		            // or `URL` instance should be the most common usage.
-		            if (typeof options.protocol === 'string') {
-		                return options.protocol === 'https:';
-		            }
-		        }
-		        // Finally, if no `protocol` property was set, then fall back to
-		        // checking the stack trace of the current call stack, and try to
-		        // detect the "https" module.
-		        const { stack } = new Error();
-		        if (typeof stack !== 'string')
-		            return false;
-		        return stack
-		            .split('\n')
-		            .some((l) => l.indexOf('(https.js:') !== -1 ||
-		            l.indexOf('node:https:') !== -1);
-		    }
-		    // In order to support async signatures in `connect()` and Node's native
-		    // connection pooling in `http.Agent`, the array of sockets for each origin
-		    // has to be updated synchronously. This is so the length of the array is
-		    // accurate when `addRequest()` is next called. We achieve this by creating a
-		    // fake socket and adding it to `sockets[origin]` and incrementing
-		    // `totalSocketCount`.
-		    incrementSockets(name) {
-		        // If `maxSockets` and `maxTotalSockets` are both Infinity then there is no
-		        // need to create a fake socket because Node.js native connection pooling
-		        // will never be invoked.
-		        if (this.maxSockets === Infinity && this.maxTotalSockets === Infinity) {
-		            return null;
-		        }
-		        // All instances of `sockets` are expected TypeScript errors. The
-		        // alternative is to add it as a private property of this class but that
-		        // will break TypeScript subclassing.
-		        if (!this.sockets[name]) {
-		            // @ts-expect-error `sockets` is readonly in `@types/node`
-		            this.sockets[name] = [];
-		        }
-		        const fakeSocket = new net.Socket({ writable: false });
-		        this.sockets[name].push(fakeSocket);
-		        // @ts-expect-error `totalSocketCount` isn't defined in `@types/node`
-		        this.totalSocketCount++;
-		        return fakeSocket;
-		    }
-		    decrementSockets(name, socket) {
-		        if (!this.sockets[name] || socket === null) {
-		            return;
-		        }
-		        const sockets = this.sockets[name];
-		        const index = sockets.indexOf(socket);
-		        if (index !== -1) {
-		            sockets.splice(index, 1);
-		            // @ts-expect-error  `totalSocketCount` isn't defined in `@types/node`
-		            this.totalSocketCount--;
-		            if (sockets.length === 0) {
-		                // @ts-expect-error `sockets` is readonly in `@types/node`
-		                delete this.sockets[name];
-		            }
-		        }
-		    }
-		    // In order to properly update the socket pool, we need to call `getName()` on
-		    // the core `https.Agent` if it is a secureEndpoint.
-		    getName(options) {
-		        const secureEndpoint = this.isSecureEndpoint(options);
-		        if (secureEndpoint) {
-		            // @ts-expect-error `getName()` isn't defined in `@types/node`
-		            return https_1.Agent.prototype.getName.call(this, options);
-		        }
-		        // @ts-expect-error `getName()` isn't defined in `@types/node`
-		        return super.getName(options);
-		    }
-		    createSocket(req, options, cb) {
-		        const connectOpts = {
-		            ...options,
-		            secureEndpoint: this.isSecureEndpoint(options),
-		        };
-		        const name = this.getName(connectOpts);
-		        const fakeSocket = this.incrementSockets(name);
-		        Promise.resolve()
-		            .then(() => this.connect(req, connectOpts))
-		            .then((socket) => {
-		            this.decrementSockets(name, fakeSocket);
-		            if (socket instanceof http.Agent) {
-		                try {
-		                    // @ts-expect-error `addRequest()` isn't defined in `@types/node`
-		                    return socket.addRequest(req, connectOpts);
-		                }
-		                catch (err) {
-		                    return cb(err);
-		                }
-		            }
-		            this[INTERNAL].currentSocket = socket;
-		            // @ts-expect-error `createSocket()` isn't defined in `@types/node`
-		            super.createSocket(req, options, cb);
-		        }, (err) => {
-		            this.decrementSockets(name, fakeSocket);
-		            cb(err);
-		        });
-		    }
-		    createConnection() {
-		        const socket = this[INTERNAL].currentSocket;
-		        this[INTERNAL].currentSocket = undefined;
-		        if (!socket) {
-		            throw new Error('No socket was returned in the `connect()` function');
-		        }
-		        return socket;
-		    }
-		    get defaultPort() {
-		        return (this[INTERNAL].defaultPort ??
-		            (this.protocol === 'https:' ? 443 : 80));
-		    }
-		    set defaultPort(v) {
-		        if (this[INTERNAL]) {
-		            this[INTERNAL].defaultPort = v;
-		        }
-		    }
-		    get protocol() {
-		        return (this[INTERNAL].protocol ??
-		            (this.isSecureEndpoint() ? 'https:' : 'http:'));
-		    }
-		    set protocol(v) {
-		        if (this[INTERNAL]) {
-		            this[INTERNAL].protocol = v;
-		        }
-		    }
-		}
-		exports$1.Agent = Agent;
-		
-	} (dist));
-	return dist;
+const debug$1 = createDebug('https-proxy-agent:parse-proxy-response');
+function parseProxyResponse(socket) {
+    return new Promise((resolve, reject) => {
+        // we need to buffer any HTTP traffic that happens with the proxy before we get
+        // the CONNECT response, so that if the response is anything other than an "200"
+        // response code, then we can re-play the "data" events on the socket once the
+        // HTTP parser is hooked up...
+        let buffersLength = 0;
+        const buffers = [];
+        function read() {
+            const b = socket.read();
+            if (b)
+                ondata(b);
+            else
+                socket.once('readable', read);
+        }
+        function cleanup() {
+            socket.removeListener('end', onend);
+            socket.removeListener('error', onerror);
+            socket.removeListener('readable', read);
+        }
+        function onend() {
+            cleanup();
+            debug$1('onend');
+            reject(new Error('Proxy connection ended before receiving CONNECT response'));
+        }
+        function onerror(err) {
+            cleanup();
+            debug$1('onerror %o', err);
+            reject(err);
+        }
+        function ondata(b) {
+            buffers.push(b);
+            buffersLength += b.length;
+            const buffered = Buffer.concat(buffers, buffersLength);
+            const endOfHeaders = buffered.indexOf('\r\n\r\n');
+            if (endOfHeaders === -1) {
+                // keep buffering
+                debug$1('have not received end of HTTP headers yet...');
+                read();
+                return;
+            }
+            const headerParts = buffered
+                .slice(0, endOfHeaders)
+                .toString('ascii')
+                .split('\r\n');
+            const firstLine = headerParts.shift();
+            if (!firstLine) {
+                socket.destroy();
+                return reject(new Error('No header received from proxy CONNECT response'));
+            }
+            const firstLineParts = firstLine.split(' ');
+            const statusCode = +firstLineParts[1];
+            const statusText = firstLineParts.slice(2).join(' ');
+            const headers = {};
+            for (const header of headerParts) {
+                if (!header)
+                    continue;
+                const firstColon = header.indexOf(':');
+                if (firstColon === -1) {
+                    socket.destroy();
+                    return reject(new Error(`Invalid header from proxy CONNECT response: "${header}"`));
+                }
+                const key = header.slice(0, firstColon).toLowerCase();
+                const value = header.slice(firstColon + 1).trimStart();
+                const current = headers[key];
+                if (typeof current === 'string') {
+                    headers[key] = [current, value];
+                }
+                else if (Array.isArray(current)) {
+                    current.push(value);
+                }
+                else {
+                    headers[key] = value;
+                }
+            }
+            debug$1('got proxy server response: %o %o', firstLine, headers);
+            cleanup();
+            resolve({
+                connect: {
+                    statusCode,
+                    statusText,
+                    headers,
+                },
+                buffered,
+            });
+        }
+        socket.on('error', onerror);
+        socket.on('end', onend);
+        read();
+    });
 }
 
-var parseProxyResponse = {};
-
-var hasRequiredParseProxyResponse;
-
-function requireParseProxyResponse () {
-	if (hasRequiredParseProxyResponse) return parseProxyResponse;
-	hasRequiredParseProxyResponse = 1;
-	var __importDefault = (parseProxyResponse && parseProxyResponse.__importDefault) || function (mod) {
-	    return (mod && mod.__esModule) ? mod : { "default": mod };
-	};
-	Object.defineProperty(parseProxyResponse, "__esModule", { value: true });
-	parseProxyResponse.parseProxyResponse = void 0;
-	const debug_1 = __importDefault(requireSrc());
-	const debug = (0, debug_1.default)('https-proxy-agent:parse-proxy-response');
-	function parseProxyResponse$1(socket) {
-	    return new Promise((resolve, reject) => {
-	        // we need to buffer any HTTP traffic that happens with the proxy before we get
-	        // the CONNECT response, so that if the response is anything other than an "200"
-	        // response code, then we can re-play the "data" events on the socket once the
-	        // HTTP parser is hooked up...
-	        let buffersLength = 0;
-	        const buffers = [];
-	        function read() {
-	            const b = socket.read();
-	            if (b)
-	                ondata(b);
-	            else
-	                socket.once('readable', read);
-	        }
-	        function cleanup() {
-	            socket.removeListener('end', onend);
-	            socket.removeListener('error', onerror);
-	            socket.removeListener('readable', read);
-	        }
-	        function onend() {
-	            cleanup();
-	            debug('onend');
-	            reject(new Error('Proxy connection ended before receiving CONNECT response'));
-	        }
-	        function onerror(err) {
-	            cleanup();
-	            debug('onerror %o', err);
-	            reject(err);
-	        }
-	        function ondata(b) {
-	            buffers.push(b);
-	            buffersLength += b.length;
-	            const buffered = Buffer.concat(buffers, buffersLength);
-	            const endOfHeaders = buffered.indexOf('\r\n\r\n');
-	            if (endOfHeaders === -1) {
-	                // keep buffering
-	                debug('have not received end of HTTP headers yet...');
-	                read();
-	                return;
-	            }
-	            const headerParts = buffered
-	                .slice(0, endOfHeaders)
-	                .toString('ascii')
-	                .split('\r\n');
-	            const firstLine = headerParts.shift();
-	            if (!firstLine) {
-	                socket.destroy();
-	                return reject(new Error('No header received from proxy CONNECT response'));
-	            }
-	            const firstLineParts = firstLine.split(' ');
-	            const statusCode = +firstLineParts[1];
-	            const statusText = firstLineParts.slice(2).join(' ');
-	            const headers = {};
-	            for (const header of headerParts) {
-	                if (!header)
-	                    continue;
-	                const firstColon = header.indexOf(':');
-	                if (firstColon === -1) {
-	                    socket.destroy();
-	                    return reject(new Error(`Invalid header from proxy CONNECT response: "${header}"`));
-	                }
-	                const key = header.slice(0, firstColon).toLowerCase();
-	                const value = header.slice(firstColon + 1).trimStart();
-	                const current = headers[key];
-	                if (typeof current === 'string') {
-	                    headers[key] = [current, value];
-	                }
-	                else if (Array.isArray(current)) {
-	                    current.push(value);
-	                }
-	                else {
-	                    headers[key] = value;
-	                }
-	            }
-	            debug('got proxy server response: %o %o', firstLine, headers);
-	            cleanup();
-	            resolve({
-	                connect: {
-	                    statusCode,
-	                    statusText,
-	                    headers,
-	                },
-	                buffered,
-	            });
-	        }
-	        socket.on('error', onerror);
-	        socket.on('end', onend);
-	        read();
-	    });
-	}
-	parseProxyResponse.parseProxyResponse = parseProxyResponse$1;
-	
-	return parseProxyResponse;
+const debug = createDebug('https-proxy-agent');
+const setServernameFromNonIpHost = (options) => {
+    if (options.servername === undefined &&
+        options.host &&
+        !net.isIP(options.host)) {
+        return {
+            ...options,
+            servername: options.host,
+        };
+    }
+    return options;
+};
+/**
+ * The `HttpsProxyAgent` implements an HTTP Agent subclass that connects to
+ * the specified "HTTP(s) proxy server" in order to proxy HTTPS requests.
+ *
+ * Outgoing HTTP requests are first tunneled through the proxy server using the
+ * `CONNECT` HTTP request method to establish a connection to the proxy server,
+ * and then the proxy server connects to the destination target and issues the
+ * HTTP request from the proxy server.
+ *
+ * `https:` requests have their socket connection upgraded to TLS once
+ * the connection to the proxy server has been established.
+ */
+class HttpsProxyAgent extends Agent {
+    constructor(proxy, opts) {
+        super(opts);
+        this.options = { path: undefined };
+        this.proxy = typeof proxy === 'string' ? new URL$1(proxy) : proxy;
+        this.proxyHeaders = opts?.headers ?? {};
+        debug('Creating new HttpsProxyAgent instance: %o', this.proxy.href);
+        // Trim off the brackets from IPv6 addresses
+        const host = (this.proxy.hostname || this.proxy.host).replace(/^\[|\]$/g, '');
+        const port = this.proxy.port
+            ? parseInt(this.proxy.port, 10)
+            : this.proxy.protocol === 'https:'
+                ? 443
+                : 80;
+        this.connectOpts = {
+            // Attempt to negotiate http/1.1 for proxy servers that support http/2
+            ALPNProtocols: ['http/1.1'],
+            ...(opts ? omit(opts, 'headers') : null),
+            host,
+            port,
+        };
+    }
+    /**
+     * Called when the node-core HTTP client library is creating a
+     * new HTTP request.
+     */
+    async connect(req, opts) {
+        const { proxy } = this;
+        if (!opts.host) {
+            throw new TypeError('No "host" provided');
+        }
+        // Create a socket connection to the proxy server.
+        let socket;
+        if (proxy.protocol === 'https:') {
+            debug('Creating `tls.Socket`: %o', this.connectOpts);
+            socket = tls.connect(setServernameFromNonIpHost(this.connectOpts));
+        }
+        else {
+            debug('Creating `net.Socket`: %o', this.connectOpts);
+            socket = net.connect(this.connectOpts);
+        }
+        const headers = typeof this.proxyHeaders === 'function'
+            ? this.proxyHeaders()
+            : { ...this.proxyHeaders };
+        const host = net.isIPv6(opts.host) ? `[${opts.host}]` : opts.host;
+        let payload = `CONNECT ${host}:${opts.port} HTTP/1.1\r\n`;
+        // Inject the `Proxy-Authorization` header if necessary.
+        if (proxy.username || proxy.password) {
+            const auth = `${decodeURIComponent(proxy.username)}:${decodeURIComponent(proxy.password)}`;
+            headers['Proxy-Authorization'] = `Basic ${Buffer.from(auth).toString('base64')}`;
+        }
+        headers.Host = `${host}:${opts.port}`;
+        if (!headers['Proxy-Connection']) {
+            headers['Proxy-Connection'] = this.keepAlive
+                ? 'Keep-Alive'
+                : 'close';
+        }
+        for (const name of Object.keys(headers)) {
+            payload += `${name}: ${headers[name]}\r\n`;
+        }
+        const proxyResponsePromise = parseProxyResponse(socket);
+        socket.write(`${payload}\r\n`);
+        const { connect, buffered } = await proxyResponsePromise;
+        req.emit('proxyConnect', connect);
+        this.emit('proxyConnect', connect, req);
+        if (connect.statusCode === 200) {
+            req.once('socket', resume);
+            if (opts.secureEndpoint) {
+                // The proxy is connecting to a TLS server, so upgrade
+                // this socket connection to a TLS connection.
+                debug('Upgrading socket connection to TLS');
+                return tls.connect({
+                    ...omit(setServernameFromNonIpHost(opts), 'host', 'path', 'port'),
+                    socket,
+                });
+            }
+            return socket;
+        }
+        // Some other status code that's not 200... need to re-play the HTTP
+        // header "data" events onto the socket once the HTTP machinery is
+        // attached so that the node core `http` can parse and handle the
+        // error status code.
+        // Close the original socket, and a new "fake" socket is returned
+        // instead, so that the proxy doesn't get the HTTP request
+        // written to it (which may contain `Authorization` headers or other
+        // sensitive data).
+        //
+        // See: https://hackerone.com/reports/541502
+        socket.destroy();
+        const fakeSocket = new net.Socket({ writable: false });
+        fakeSocket.readable = true;
+        // Need to wait for the "socket" event to re-play the "data" events.
+        req.once('socket', (s) => {
+            debug('Replaying proxy buffer for failed request');
+            require$$5$4(s.listenerCount('data') > 0);
+            // Replay the "buffered" Buffer onto the fake `socket`, since at
+            // this point the HTTP module machinery has been hooked up for
+            // the user.
+            s.push(buffered);
+            s.push(null);
+        });
+        return fakeSocket;
+    }
 }
-
-var hasRequiredDist;
-
-function requireDist () {
-	if (hasRequiredDist) return dist$1;
-	hasRequiredDist = 1;
-	var __createBinding = (dist$1 && dist$1.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-	    if (k2 === undefined) k2 = k;
-	    var desc = Object.getOwnPropertyDescriptor(m, k);
-	    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-	      desc = { enumerable: true, get: function() { return m[k]; } };
-	    }
-	    Object.defineProperty(o, k2, desc);
-	}) : (function(o, m, k, k2) {
-	    if (k2 === undefined) k2 = k;
-	    o[k2] = m[k];
-	}));
-	var __setModuleDefault = (dist$1 && dist$1.__setModuleDefault) || (Object.create ? (function(o, v) {
-	    Object.defineProperty(o, "default", { enumerable: true, value: v });
-	}) : function(o, v) {
-	    o["default"] = v;
-	});
-	var __importStar = (dist$1 && dist$1.__importStar) || function (mod) {
-	    if (mod && mod.__esModule) return mod;
-	    var result = {};
-	    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-	    __setModuleDefault(result, mod);
-	    return result;
-	};
-	var __importDefault = (dist$1 && dist$1.__importDefault) || function (mod) {
-	    return (mod && mod.__esModule) ? mod : { "default": mod };
-	};
-	Object.defineProperty(dist$1, "__esModule", { value: true });
-	dist$1.HttpsProxyAgent = void 0;
-	const net = __importStar(require$$0$7);
-	const tls = __importStar(require$$1);
-	const assert_1 = __importDefault(require$$5$4);
-	const debug_1 = __importDefault(requireSrc());
-	const agent_base_1 = requireDist$1();
-	const url_1 = require$$5$5;
-	const parse_proxy_response_1 = requireParseProxyResponse();
-	const debug = (0, debug_1.default)('https-proxy-agent');
-	const setServernameFromNonIpHost = (options) => {
-	    if (options.servername === undefined &&
-	        options.host &&
-	        !net.isIP(options.host)) {
-	        return {
-	            ...options,
-	            servername: options.host,
-	        };
-	    }
-	    return options;
-	};
-	/**
-	 * The `HttpsProxyAgent` implements an HTTP Agent subclass that connects to
-	 * the specified "HTTP(s) proxy server" in order to proxy HTTPS requests.
-	 *
-	 * Outgoing HTTP requests are first tunneled through the proxy server using the
-	 * `CONNECT` HTTP request method to establish a connection to the proxy server,
-	 * and then the proxy server connects to the destination target and issues the
-	 * HTTP request from the proxy server.
-	 *
-	 * `https:` requests have their socket connection upgraded to TLS once
-	 * the connection to the proxy server has been established.
-	 */
-	class HttpsProxyAgent extends agent_base_1.Agent {
-	    constructor(proxy, opts) {
-	        super(opts);
-	        this.options = { path: undefined };
-	        this.proxy = typeof proxy === 'string' ? new url_1.URL(proxy) : proxy;
-	        this.proxyHeaders = opts?.headers ?? {};
-	        debug('Creating new HttpsProxyAgent instance: %o', this.proxy.href);
-	        // Trim off the brackets from IPv6 addresses
-	        const host = (this.proxy.hostname || this.proxy.host).replace(/^\[|\]$/g, '');
-	        const port = this.proxy.port
-	            ? parseInt(this.proxy.port, 10)
-	            : this.proxy.protocol === 'https:'
-	                ? 443
-	                : 80;
-	        this.connectOpts = {
-	            // Attempt to negotiate http/1.1 for proxy servers that support http/2
-	            ALPNProtocols: ['http/1.1'],
-	            ...(opts ? omit(opts, 'headers') : null),
-	            host,
-	            port,
-	        };
-	    }
-	    /**
-	     * Called when the node-core HTTP client library is creating a
-	     * new HTTP request.
-	     */
-	    async connect(req, opts) {
-	        const { proxy } = this;
-	        if (!opts.host) {
-	            throw new TypeError('No "host" provided');
-	        }
-	        // Create a socket connection to the proxy server.
-	        let socket;
-	        if (proxy.protocol === 'https:') {
-	            debug('Creating `tls.Socket`: %o', this.connectOpts);
-	            socket = tls.connect(setServernameFromNonIpHost(this.connectOpts));
-	        }
-	        else {
-	            debug('Creating `net.Socket`: %o', this.connectOpts);
-	            socket = net.connect(this.connectOpts);
-	        }
-	        const headers = typeof this.proxyHeaders === 'function'
-	            ? this.proxyHeaders()
-	            : { ...this.proxyHeaders };
-	        const host = net.isIPv6(opts.host) ? `[${opts.host}]` : opts.host;
-	        let payload = `CONNECT ${host}:${opts.port} HTTP/1.1\r\n`;
-	        // Inject the `Proxy-Authorization` header if necessary.
-	        if (proxy.username || proxy.password) {
-	            const auth = `${decodeURIComponent(proxy.username)}:${decodeURIComponent(proxy.password)}`;
-	            headers['Proxy-Authorization'] = `Basic ${Buffer.from(auth).toString('base64')}`;
-	        }
-	        headers.Host = `${host}:${opts.port}`;
-	        if (!headers['Proxy-Connection']) {
-	            headers['Proxy-Connection'] = this.keepAlive
-	                ? 'Keep-Alive'
-	                : 'close';
-	        }
-	        for (const name of Object.keys(headers)) {
-	            payload += `${name}: ${headers[name]}\r\n`;
-	        }
-	        const proxyResponsePromise = (0, parse_proxy_response_1.parseProxyResponse)(socket);
-	        socket.write(`${payload}\r\n`);
-	        const { connect, buffered } = await proxyResponsePromise;
-	        req.emit('proxyConnect', connect);
-	        this.emit('proxyConnect', connect, req);
-	        if (connect.statusCode === 200) {
-	            req.once('socket', resume);
-	            if (opts.secureEndpoint) {
-	                // The proxy is connecting to a TLS server, so upgrade
-	                // this socket connection to a TLS connection.
-	                debug('Upgrading socket connection to TLS');
-	                return tls.connect({
-	                    ...omit(setServernameFromNonIpHost(opts), 'host', 'path', 'port'),
-	                    socket,
-	                });
-	            }
-	            return socket;
-	        }
-	        // Some other status code that's not 200... need to re-play the HTTP
-	        // header "data" events onto the socket once the HTTP machinery is
-	        // attached so that the node core `http` can parse and handle the
-	        // error status code.
-	        // Close the original socket, and a new "fake" socket is returned
-	        // instead, so that the proxy doesn't get the HTTP request
-	        // written to it (which may contain `Authorization` headers or other
-	        // sensitive data).
-	        //
-	        // See: https://hackerone.com/reports/541502
-	        socket.destroy();
-	        const fakeSocket = new net.Socket({ writable: false });
-	        fakeSocket.readable = true;
-	        // Need to wait for the "socket" event to re-play the "data" events.
-	        req.once('socket', (s) => {
-	            debug('Replaying proxy buffer for failed request');
-	            (0, assert_1.default)(s.listenerCount('data') > 0);
-	            // Replay the "buffered" Buffer onto the fake `socket`, since at
-	            // this point the HTTP module machinery has been hooked up for
-	            // the user.
-	            s.push(buffered);
-	            s.push(null);
-	        });
-	        return fakeSocket;
-	    }
-	}
-	HttpsProxyAgent.protocols = ['http', 'https'];
-	dist$1.HttpsProxyAgent = HttpsProxyAgent;
-	function resume(socket) {
-	    socket.resume();
-	}
-	function omit(obj, ...keys) {
-	    const ret = {};
-	    let key;
-	    for (key in obj) {
-	        if (!keys.includes(key)) {
-	            ret[key] = obj[key];
-	        }
-	    }
-	    return ret;
-	}
-	
-	return dist$1;
+HttpsProxyAgent.protocols = ['http', 'https'];
+function resume(socket) {
+    socket.resume();
 }
-
-var distExports = requireDist();
+function omit(obj, ...keys) {
+    const ret = {};
+    let key;
+    for (key in obj) {
+        if (!keys.includes(key)) {
+            ret[key] = obj[key];
+        }
+    }
+    return ret;
+}
 
 // Copyright 2021-2026 Zenauth Ltd.
 // SPDX-License-Identifier: Apache-2.0
@@ -45034,7 +44911,7 @@ async function run() {
         auth: githubToken,
         request: {
             agent: process.env.http_proxy
-                ? new distExports.HttpsProxyAgent(process.env.http_proxy)
+                ? new HttpsProxyAgent(process.env.http_proxy)
                 : undefined,
             fetch
         },
