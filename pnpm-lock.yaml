@@ -637,6 +637,12 @@ packages:
     peerDependencies:
       typescript: '>=4.8.4 <6.1.0'
 
+  '@typescript-eslint/tsconfig-utils@8.65.0':
+    resolution: {integrity: sha512-j6GzGqCiRdA7Qhur2VVmKZAkBLfnHFQfx4TaJGL9RMveZqCo48jSHHO0DTgizEnGhtWnqmbtCUSrqSkdiY/0Hg==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      typescript: '>=4.8.4 <6.1.0'
+
   '@typescript-eslint/type-utils@8.62.0':
     resolution: {integrity: sha512-+g5O3j0w2ldzC86Pv6fvbO/xhAonbJFIdf/MKQ1d30gndlsVzUOE83ldfSE15Qrl9fhFjK6AovHs5Wpp6vx86w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -646,6 +652,10 @@ packages:
 
   '@typescript-eslint/types@8.62.0':
     resolution: {integrity: sha512-KvAclkktORPvM54TgLgA4z9HIV1M8zOgw9ZVNXl9f/8dLYfXYX1wkMXP7qmabpijQRV5bHJLOmoyGQbLMaUYeg==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@typescript-eslint/types@8.65.0':
+    resolution: {integrity: sha512-JSSwWNy+H0E/01jJEM+hrX6N0OFDzFzeIhHFSAS01tlVaevpG8cFyYRPhS5yjGOvBUx3sqQHVMjCL1CAZZMxBg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@typescript-eslint/typescript-estree@8.62.0':
@@ -1660,8 +1670,8 @@ snapshots:
 
   '@typescript-eslint/project-service@8.62.0(typescript@6.0.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.62.0(typescript@6.0.3)
-      '@typescript-eslint/types': 8.62.0
+      '@typescript-eslint/tsconfig-utils': 8.65.0(typescript@6.0.3)
+      '@typescript-eslint/types': 8.65.0
       debug: 4.4.3
       typescript: 6.0.3
     transitivePeerDependencies:
@@ -1673,6 +1683,10 @@ snapshots:
       '@typescript-eslint/visitor-keys': 8.62.0
 
   '@typescript-eslint/tsconfig-utils@8.62.0(typescript@6.0.3)':
+    dependencies:
+      typescript: 6.0.3
+
+  '@typescript-eslint/tsconfig-utils@8.65.0(typescript@6.0.3)':
     dependencies:
       typescript: 6.0.3
 
@@ -1689,6 +1703,8 @@ snapshots:
       - supports-color
 
   '@typescript-eslint/types@8.62.0': {}
+
+  '@typescript-eslint/types@8.65.0': {}
 
   '@typescript-eslint/typescript-estree@8.62.0(typescript@6.0.3)':
     dependencies:
