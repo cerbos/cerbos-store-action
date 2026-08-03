@@ -1,6 +1,9 @@
 name: 'CI'
 on:
   pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   lint-build-check-test-and-use:
@@ -16,7 +19,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           node-version-file: '.node-version'
           package-manager-cache: false
-      
+
       - name: Set up pnpm
         uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
         with:
