@@ -1,43 +1,43 @@
-name: 'Cerbos Store Action'
-description: 'Uploads Cerbos policies to Cerbos Hub stores'
-author: 'Cerbos'
+name: "Cerbos Store Action"
+description: "Uploads Cerbos policies to Cerbos Hub stores"
+author: "Cerbos"
 branding:
-  icon: 'upload-cloud'
-  color: 'orange'
+  icon: "upload-cloud"
+  color: "orange"
 
 inputs:
   github_token:
-    description: 'The GitHub token to use'
+    description: "The GitHub token to use"
 
   version:
-    description: 'Cerbosctl version to download if not exists in the tool cache already'
-    default: 'latest'
+    description: "Cerbosctl version to download if not exists in the tool cache already"
+    default: "latest"
 
   api_endpoint:
-    description: 'Cerbos Hub API endpoint'
-    default: 'https://api.cerbos.cloud'
+    description: "Cerbos Hub API endpoint"
+    default: "https://api.cerbos.cloud"
 
   store_id:
-    description: 'ID of the Cerbos Hub store to operate on'
+    description: "ID of the Cerbos Hub store to operate on"
     required: true
 
   client_id:
-    description: 'Client ID of the store access credential'
+    description: "Client ID of the store access credential"
     required: true
 
   client_secret:
-    description: 'Client secret of the store access credential'
+    description: "Client secret of the store access credential"
     required: true
 
   from_revision:
-    description: 'Git revision to start from when generating the diff (Ex: HEAD~1) (The resolved reference must be the ancestor of the to_revision input)'
+    description: "Git revision to start from when generating the diff (Ex: HEAD~1) (The resolved reference must be the ancestor of the to_revision input)"
 
   to_revision:
-    description: 'Git revision to end when generating the diff (Ex: HEAD)'
+    description: "Git revision to end when generating the diff (Ex: HEAD)"
 
   subdir:
-    description: 'Subdirectory under the repository path to check and upload changes from (Ex: policies)'
+    description: "Subdirectory under the repository path to check and upload changes from (Ex: policies)"
 
 runs:
-  using: 'node24'
-  main: './dist/index.js'
+  using: "node24"
+  main: "./dist/index.js"
